@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/app_metro.css"  /> 
+    <title>Εύρεση κοντινότερου σταθμού</title>    
+  </head>
+  <body>
+  <div>
+  <table>
+    <tr>
+      <td>Latitude:</td>
+      <td><input id="latitude" type="text" value="" disabled /></td>      
+    </tr>
+    <tr>
+      <td>Longitude:</td>
+      <td><input id="longitude" type="text" value="" disabled /></td>
+    </tr>
+  </table>
+  </div>
+  <br/>
+  <div>
+    <table>
+      <tr>
+        <td><button type="button" class="green-btn" onclick="getMyLocation();">Χρήση τρέχουσας τοποθεσίας</button></td>
+        <td><button type="button" class="green-btn" onclick="goToGoogleMaps();">Μετάβαση στο Google Maps</button></td>
+      </tr>
+      <tr>
+        <td><button type="button" class="green-btn" data-toggle="modal" data-target="#getNearestStationForAirportModal" onclick="getNearestStationForAirport();">Προβολή κοντινότερου σταθμού (προς Αεροδρόμιο)</button></td>
+        <td><button type="button" class="green-btn" data-toggle="modal" data-target="#getNearestStationModal" onclick="getNearestStation();">Προβολή κοντινότερου σταθμού</button></td>
+      </tr>
+      <tr>
+        <td><button type="button" class="green-btn" onclick="getFirstAirportArrivalOfNearestStation();">Προβολή πρώτου δρομολογίου του κοντινότερου σταθμού προς Αεροδρόμιο</button></td>
+        <td><button type="button" class="green-btn" onclick="getLastAirportArrivalOfNearestStation();">Προβολή τελευταίου δρομολογίου του κοντινότερου σταθμού προς Αεροδρόμιο</button></td>
+      </tr>
+      <tr>
+        <td colspan="2"><button type="button" class="green-btn" onclick="getLocalArrivalsOfNearestStation();">Προβολή επόμενων δρομολογίων κοντινότερου σταθμού</button></td>
+      </tr>
+    </table>
+  </div>  
+  <p id="result"></p>
+  <p id="result2">
+    <ul id="data"></ul>
+  </p>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="js/app_metro.js"></script>	
+
+  <!--modals-->
+
+  <div class="modal fade" id="getNearestStationForAirportModal" tabindex="-1" role="dialog" aria-labelledby="getNearestStationForAirportModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="getNearestStationForAirportModalLabel">Προβολή κοντινότερου σταθμού (προς Αεροδρόμιο)</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr>
+              <td><span>Σταθμός:</span></td>
+              <td><span id="station"></span></td>
+            </tr>
+            <tr>
+              <td><span>Γραμμή:</span></td>
+              <td><span id="line"></span></td>
+            </tr>
+            <tr>
+              <td><span>Επόμενο δρομολόγιο προς Αεροδρόμιο:</span></td>
+              <td><span id="nextArrival"></span></td>
+            </tr>
+            <tr>
+              <td><span>Απομένουν:</span></td>
+              <td><span id="timeLeft"></span></td>
+            </tr>
+            <tr>
+              <td><span>Απόσταση σταθμού από την τρέχουσα τοποθεσία σας (σε χλμ.):</span></td>
+              <td><span id="distanceKm"></span></td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" data-dismiss="modal">Κλείσιμο</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="getNearestStationModal" tabindex="-1" role="dialog" aria-labelledby="getNearestStationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="getNearestStationModalLabel">Προβολή κοντινότερου σταθμού</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr>
+              <td><span>Σταθμός:</span></td>
+              <td><span id="station2"></span></td>
+            </tr>
+            <tr>
+              <td><span>Γραμμή:</span></td>
+              <td><span id="line2"></span></td>
+            </tr>
+            <tr>
+              <td><span>Απόσταση σταθμού από την τρέχουσα τοποθεσία σας (σε χλμ.):</span></td>
+              <td><span id="distanceKm2"></span></td>
+            </tr>           
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" data-dismiss="modal">Κλείσιμο</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </body>
+</html>

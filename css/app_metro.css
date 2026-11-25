@@ -1,0 +1,48 @@
+.green-btn {
+  position: relative;
+    background-image: linear-gradient(to right, #0e2405 , #264f15);
+    border: none;
+    color: #e2fad9;
+    padding: 1em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    margin: .5em;
+    cursor: pointer;
+    border-radius: .7em;  
+  }
+
+  .red-btn {
+    background-image: linear-gradient(to right, #a30a0a , #f50505);
+    border: none;
+    color: #fad7d7;
+    padding: 1em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    margin: .5em;
+    cursor: pointer;
+    border-radius: .7em;  
+  }
+
+  .blue-btn {
+    background-image: linear-gradient(to right, #11134a , #0c13cc);
+    border: none;
+    color: #c8caf7;
+    padding: 1em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    margin: .5em;
+    cursor: pointer;
+    border-radius: .7em;  
+  }
+
+  body{
+    font-family: system-ui;
+    background-color: green;
+    color: #e2fad9;
+  }
